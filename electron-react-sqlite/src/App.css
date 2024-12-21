@@ -1,0 +1,22 @@
+.background {
+	background-image: url("./Assets/background.svg");
+	color: rgb(184, 198, 134);
+	height: 100vh;
+}
+
+.background span {
+	position: fixed;
+	bottom: 2%;
+}
+
+.App {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100%;
+	gap: 3em;
+	overflow-y: auto;
+}
