@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { Display } from "./Components/Display";
+import { Display } from "./Components/home";
 import { InputPerson } from "./Components/InputPerson";
 import { useCallback } from "react";
 
@@ -12,18 +11,28 @@ function App() {
         setData(data);
     }, []);
 
+    const removeSinglePerson = useCallback(
+        (id) => {
+            window.sqlite.personDB?.removePerson(id);
+            fetchData();
+        },
+        [fetchData]
+    );
+
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
     return (
         <>
-            <div className="background">
-                <div className="App">
+            <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+                <div className="bg-blue-200 p-4 rounded-md shadow-md w-96 space-y-4">
                     <InputPerson fetchData={fetchData} />
-                    <Display data={data} />
+                    <Display
+                        data={data}
+                        removeSinglePerson={removeSinglePerson}
+                    />
                 </div>
-                <span>The background is provided by loading.io </span>
             </div>
         </>
     );

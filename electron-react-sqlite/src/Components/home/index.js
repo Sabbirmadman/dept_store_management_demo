@@ -1,11 +1,9 @@
-import styles from "./display.module.css";
-
-export const Display = ({ data }) => {
+export const Display = ({ data, removeSinglePerson }) => {
     return (
         <>
             {data.length > 0 && (
-                <div className={styles.tableContainer}>
-                    <table className={styles.table}>
+                <div>
+                    <table>
                         <thead>
                             <tr>
                                 <th>Nickname</th>
@@ -17,6 +15,15 @@ export const Display = ({ data }) => {
                                 <tr key={item.id}>
                                     <td>{item.name}</td>
                                     <td>{item.age}</td>
+                                    <td>
+                                        <button
+                                            onClick={() =>
+                                                removeSinglePerson(item.id)
+                                            }
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
